@@ -1,0 +1,9 @@
+CREATE table mercadoria(
+    id integer PRIMARY KEY,
+    id_book INTEGER,
+    nome TEXT NOT NULL,
+    titulo TEXT,
+    descricao TEXT,
+    imagem TEXT
+    
+);
