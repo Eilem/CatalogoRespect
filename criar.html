@@ -14,9 +14,18 @@
         			// var nome = $('#nome').val(); // do ajax
         			// var nome = $('input[name="nome"]'); // pegando pelo input
 
-        			var nome = $('#nome')[0].value;
+                    var tipo = $('#tipo')[0].value;
+
         			var titulo = $('#titulo')[0].value;
         			var descricao = $('#descricao')[0].value;
+
+                    var detalhes = $('#detalhes')[0].value;
+
+                    var preco = $('#preco')[0].value;
+                    var precoPromocional = $('#precoPromocional')[0].value;
+
+                    var status = $('#status')[0].value;
+
         			var imagem = $('#imagem')[0].value;
 
         			$.ajax( {
@@ -26,17 +35,25 @@
         				data: {
         					book: location.search.slice(1).split("&")[0].split("=")[1], // quebrando a string em array, pegando o valor 
         					agente: location.search.slice(1).split("&")[1].split("=")[1],
+                            tipo : tipo,
+                            codigo: codigo,
         					nome: nome,
         					titulo: titulo,
         					descricao: descricao,
+                            detalhes:detalhes,
+                            preco:preco,
+                            precoPromocional: precoPromocional,
+                            status: status,
         					imagem: imagem
         				},
+
 
         				success: function(retorno){
         					console.log(retorno);
         				}
 
         			});
+                    console.log($.ajax);
         		});
 
         	});
@@ -44,22 +61,56 @@
         </script>
 
     </head>
+
     <body>
     	<div>
 			<form action="/mercadoria" method="POST">
 				<h3>Cadastrar Mercadoria</h3>
+                <div>
+                    <label>Produto(1) , serviço(2)</label>
+                    <input type="text" name="tipo" id="tipo" />
+                </div>
+                
 	    		<div>
-	    			<label>Nome</label>
-					<input type="text" name="nome" id="nome"/>
-	    		</div>
+                    <label>código</label>
+                    <input type="text" name="codigo" id="codigo"/>
+                </div>
+
+                <div>
+                    <label>Nome</label>
+                    <input type="text" name="nome" id="nome"/>
+                </div>
+
 	    		<div>
 	    			<label>Titulo</label>
 					<input type="text" name="titulo" id="titulo" />
 	    		</div>
+
 	    		<div>
 	    			<label>Descrição</label>
 					<input type="text" name="descricao" id="descricao" />
 	    		</div>
+                
+                <div>
+                    <label>Detalhes</label>
+                    <input type="text" name="detalhes" id="detalhes" />
+                </div>
+                
+                <div>
+                    <label>Preço</label>
+                    <input type="text" name="preco" id="preco" />
+                </div>
+                
+                <div>
+                    <label>Preço Promocional</label>
+                    <input type="text" name="precoPromocional" id="precoPromocional" />
+                </div>
+                
+                <div>
+                    <label>Ativo(1) , Inativo(2)</label>
+                    <input type="text" name="status" id="status"/>
+                </div>
+
 	    		<div>
 	    			<label>Imagem</label>
 					<input type="text" name="imagem" id="imagem"/>

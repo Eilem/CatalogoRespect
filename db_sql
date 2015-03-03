@@ -1,9 +1,16 @@
 CREATE table mercadoria(
     id integer PRIMARY KEY,
     id_book INTEGER,
+    id_agente INTEGER,
+    codigo TEXT,
     nome TEXT NOT NULL,
     titulo TEXT,
     descricao TEXT,
+    detalhes TEXT,
+    preco_normal DECIMAL,
+    preco_promocional DECIMAL,
+    data_hora_criacao TIMESTAMP,
+    status ENUM (1,2),
+    tipo ENUM(1,2),
     imagem TEXT
-    
-);
+ );
