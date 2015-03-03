@@ -15,17 +15,13 @@
         			// var nome = $('input[name="nome"]'); // pegando pelo input
 
                     var tipo = $('#tipo')[0].value;
-
+                    var codigo = $('#codigo')[0].value;
         			var titulo = $('#titulo')[0].value;
         			var descricao = $('#descricao')[0].value;
-
                     var detalhes = $('#detalhes')[0].value;
-
-                    var preco = $('#preco')[0].value;
+                    var precoNormal = $('#precoNormal')[0].value;
                     var precoPromocional = $('#precoPromocional')[0].value;
-
                     var status = $('#status')[0].value;
-
         			var imagem = $('#imagem')[0].value;
 
         			$.ajax( {
@@ -41,15 +37,29 @@
         					titulo: titulo,
         					descricao: descricao,
                             detalhes:detalhes,
-                            preco:preco,
+                            precoNormal :precoNormal,
                             precoPromocional: precoPromocional,
                             status: status,
         					imagem: imagem
         				},
 
-
         				success: function(retorno){
-        					console.log(retorno);
+
+                            $.ajax({
+                                url: "/mercadoria",
+                                dataType: "json",
+                                method: "POST",
+                                data:{
+                                        identificador: retorno.id,
+                                        tipo: 7,
+                                        servidor: 4,
+                                        agente: 1,
+                                        book: retorno.book
+                                },
+                                success: function( retorno){
+
+                                }
+                            });
         				}
 
         			});
@@ -64,7 +74,7 @@
 
     <body>
     	<div>
-			<form action="/mercadoria" method="POST">
+			<form method="POST">
 				<h3>Cadastrar Mercadoria</h3>
                 <div>
                     <label>Produto(1) , serviço(2)</label>
@@ -98,7 +108,7 @@
                 
                 <div>
                     <label>Preço</label>
-                    <input type="text" name="preco" id="preco" />
+                    <input type="text" name="precoNormal" id="precoNormal" />
                 </div>
                 
                 <div>
